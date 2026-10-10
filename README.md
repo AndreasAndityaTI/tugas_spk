@@ -6,12 +6,25 @@ Sistem Pendukung Keputusan berbasis web untuk membantu pemilihan lokasi usaha at
 ---
 
 ## 📁 Struktur Proyek
-
 ```
-├── index.html                                          ← Aplikasi Web SPK (buka di browser)
+├── index.html                                          ← Struktur HTML (buka di browser)
+├── css/
+│   └── styles.css                                      ← Seluruh styling aplikasi
+├── js/
+│   ├── state.js                                        ← Data & state global (kriteria, alternatif, bobot, RI)
+│   ├── criteria.js                                     ← Modul Langkah 1: kriteria
+│   ├── alternatives.js                                 ← Modul Langkah 3: alternatif lokasi
+│   ├── ahp.js                                          ← Perhitungan AHP (pairwise, bobot, CI/CR)
+│   ├── decision.js                                     ← Matriks keputusan & perhitungan TOPSIS
+│   ├── navigation.js                                   ← Navigasi antar langkah (wizard)
+│   └── main.js                                         ← Inisialisasi aplikasi
 ├── Presentasi_SPK_Pemilihan_Lokasi_Cabang_Baru.pptx   ← Slide Presentasi (12 slide)
 └── README.md                                           ← Dokumentasi ini
 ```
+
+Kode JavaScript dipisah per tanggung jawab (separation of concerns). Script dimuat di `index.html`
+dengan urutan: `state.js` → modul fitur → `main.js`, karena `main.js` bergantung pada seluruh fungsi
+modul untuk inisialisasi saat `DOMContentLoaded`.
 
 ---
 
